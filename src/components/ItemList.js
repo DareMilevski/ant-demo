@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const ItemList = ({ setData, defaultItems }) => {
-  const [active, setActive] = useState(-1);
+  const [active, setActive] = useState(0);
   const categories = [
     {
       active: true,

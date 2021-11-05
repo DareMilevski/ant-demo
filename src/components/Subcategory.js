@@ -1,37 +1,23 @@
 import { MedicineBoxOutlined, LaptopOutlined } from "@ant-design/icons";
 
 const Subcategory = ({
-  data,
-  onlineData,
-  isOnline,
-  isOffline,
-  offlineData,
+  items,
+  setItems
 }) => {
-  const getOnlineCategories = () => {
-    data.map((item) => {
-      onlineData([item]);
-      isOnline(true);
-    });
-  };
-
-  const getOfflineCategories = () => {
-    const onlineArray = []
-    data.map((item) => {
-      if (item.online === false) {
-        onlineArray.push([item])
-        console.log("in clinic data", item);
-        isOffline(true);
+  const filterList = (onlyOnline) => {
+    setItems(items.filter(item=>{
+      if(onlyOnline && !item.online){
+        return false;
       }
-    });
-    offlineData(onlineArray);
-  };
-
+      return true;
+    }))
+  }
   return (
     <div className="showSubcategory">
       <div
         className="showSubcategoryInner"
         onClick={() => {
-          getOfflineCategories();
+          filterList(false);
         }}
       >
         <MedicineBoxOutlined />
@@ -40,7 +26,7 @@ const Subcategory = ({
       <div
         className="showSubcategoryInner"
         onClick={() => {
-          getOnlineCategories();
+          filterList(true);
         }}
       >
         <LaptopOutlined />

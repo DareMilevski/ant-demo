@@ -18,6 +18,8 @@ const App = () => {
       for (let i = 0; i < categories.length; i++) {
         out = [...out, ...categories[i].subCategory];
       }
+    }else{
+      out = defaultItems[0].category[0].subCategory;
     }
     return out;
   };
@@ -39,14 +41,10 @@ const App = () => {
     }
     return out;
   };
-
   const [data, setData] = useState(getAllMainCategories());
   const [items, setItems] = useState(getSubCategories());
-
   useEffect(() => {
-    if (data.length && data[0].subCategory) {
-      setItems(getSubCategories([]));
-    } else {
+    if (!data.length ) {
       setItems(getAllCategories());
       setData(getAllMainCategories());
     }
@@ -58,7 +56,7 @@ const App = () => {
       <ItemList setData={setData} defaultItems={defaultItems} />
       <div className="main">
         <SelectList data={data} setItems={setItems} />
-        <ShowDetailsList items={items} />
+        <ShowDetailsList items={items} setItems={setItems} />
       </div>
       <Layout>
         <Footer>
