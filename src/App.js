@@ -12,6 +12,7 @@ import logo from "./img/icon-pabau-blue.png";
 const { Footer } = Layout;
 
 const App = () => {
+  
   const getSubCategories = (categories) => {
     let out = [];
     if (categories) {
@@ -23,7 +24,7 @@ const App = () => {
     }
     return out;
   };
-
+console.log(getSubCategories())
   const getAllCategories = () => {
     let out = [];
     for (let i = 0; i < defaultItems.length; i++) {
@@ -33,7 +34,7 @@ const App = () => {
     }
     return out;
   };
-
+  console.log(getAllCategories())
   const getAllMainCategories = () => {
     let out = [];
     for (let i = 0; i < defaultItems.length; i++) {
@@ -41,15 +42,17 @@ const App = () => {
     }
     return out;
   };
+  console.log(getAllMainCategories())
+
   const [data, setData] = useState(getAllMainCategories());
   const [items, setItems] = useState(getSubCategories());
-  useEffect(() => {
-    if (!data.length ) {
-      setItems(getAllCategories());
-      setData(getAllMainCategories());
-    }
-  }, [data]);
 
+  // useEffect(() => {
+  //   if (!data.length) {
+  //     setItems(getAllCategories());
+  //     setData(getAllMainCategories());
+  //   }
+  // }, [data]);
   return (
     <div className="App">
       <Navbar />

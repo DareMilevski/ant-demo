@@ -10,7 +10,7 @@ const ShowDetailsList = ({ items, setItems }) => {
         items={items}
         setItems={setItems}
       />
-      { items.map((el, i) => (
+      {items.map((el, i) => (
             <div className="detailInner" key={i}>
               <div className="detailContainer">
                 <div className="menu-items-detail">
@@ -21,7 +21,7 @@ const ShowDetailsList = ({ items, setItems }) => {
                   <span>
                     {el.time} min <ClockCircleOutlined />{" "}
                   </span>
-                  <span>{el.key} services</span>
+                  <span className='service-number'>{el.key} services</span>
                 </div>
                 <div className="detailContainerBottom">
                   <div>
